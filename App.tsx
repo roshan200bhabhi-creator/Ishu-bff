@@ -398,7 +398,22 @@ const App: React.FC = () => {
               setSearchResults(msg.serverContent.groundingMetadata.groundingChunks || []);
               setSearchActive(true);
             }
-            if (msg.toolCall) {
+            if (msg.toolCall.name === 'play_media') {
+              const { query, platform } = msg.toolcall.args;
+
+              if (platform === 'youtube') {
+                const videoId = await searchYoutube(query);
+
+                if (videoId) {
+                  setMediaPlatform('youtube');
+                  setMediaId(videoId)
+                  setMediaQuery(query);
+                  setMediaAction('playing');
+                  setMediaActive(true);
+                }
+              }
+              return;
+            }
               for (const fc of msg.toolCall.functionCalls) {
                 const args = fc.args as any;
                 if (fc.name === 'sync_memory') {
