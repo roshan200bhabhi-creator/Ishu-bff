@@ -322,7 +322,13 @@ const App: React.FC = () => {
     let interval: number | null = null;
     if (isConnected) {
       interval = window.setInterval(() => {
-        const now = Date.now();
+        const indiaTime = new
+          Date().toLocalString("en-IN", {
+            timezone: "Asia/Kolkata",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          });
         const diff = (now - lastActivityTimestamp.current) / 1000;
         if (diff >= 8 && !isSpeaking && !mediaActive && !perfActive) {
           if (sessionRef.current) {
