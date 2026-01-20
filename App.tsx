@@ -12,8 +12,22 @@ const MEMORY_STORAGE_KEY = 'ISHU_BFF_LONG_TERM_MEMORY';
  * Helper function to search YouTube and return a video ID.
  */
 const searchYouTube = async (query: string): Promise<string | null> => {
-  console.debug('Searching YouTube for:', query);
-  return 'dQw4w9WgXcQ';
+  try {
+     const res = await fetch(
+
+    'https://www.youtube.com/results?search_query=${encodeURIComponent(query)}'
+       );
+    const html = await res.text();
+
+    const match = html.match(/"videoId":"(.*?)"/);
+    if (match && match[1];
+      return match[1];
+  }
+  return null;
+} catch (err) {
+  console.error('Youtube search failed', err);
+  return null;
+}
 };
 
 // --- Tool Definitions ---
@@ -322,9 +336,10 @@ const App: React.FC = () => {
     let interval: number | null = null;
     if (isConnected) {
       interval = window.setInterval(() => {
+        const now = Date.now();
         const indiaTime = new
-          Date().toLocalString("en-IN", {
-            timezone: "Asia/Kolkata",
+          Date().toLocaleString("en-IN", {
+            timeZone: "Asia/Kolkata",
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit"
