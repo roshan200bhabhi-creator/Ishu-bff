@@ -358,8 +358,8 @@ const App: React.FC = () => {
       const storedMemory = localStorage.getItem(MEMORY_STORAGE_KEY) || "Arre bhai memory khali hai... kaho kaisan ho?";
       const activeInstruction = MASTER_SYSTEM_INSTRUCTION.replace('{{USER_MEMORY}}', storedMemory);
 
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      import.meta.env.VITE_GEMINI_API_KEY });
+      const ai = new GoogleGenAI({ apiKey:
+      import.meta.env.VITE_GEMINI_API_KEY, });
       const inputCtx = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
       const outputCtx = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
       audioContextRef.current = { input: inputCtx, output: outputCtx, nextStartTime: 0, sources: new Set() };
