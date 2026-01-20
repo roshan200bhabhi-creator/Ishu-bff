@@ -591,13 +591,17 @@ const App: React.FC = () => {
         .animate-reverse-spin { animation: reverse-spin 120s linear infinite; }
         .animate-heartbeat-slow { animation: heartbeat 3.5s ease-in-out infinite; }
         .animate-heartbeat-fast { animation: heartbeat 1.2s ease-in-out infinite; }
-        .custom-scrollbar::-webkit-scrollbar { width: 12px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 100px; }
-        .backdrop-blur-4xl { backdrop-filter: blur(80px); }
-        .backdrop-blur-5xl { backdrop-filter: blur(150px); }
+         /* Mobile Specific Overrides */
+        @media (max-width: 600px) {
+          .font-calligraphy { font-size: 1.1em; }
+          h1.text-4xl { font-size: 2.8rem; line-height: 1; margin-top: 4px; }
+          .backdrop-blur-3xl { backdrop-filter: blur(20px); }
+          .shadow-3xl { shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        }
       `}</style>
     </div>
   );
 };
+
 
 export default App;
