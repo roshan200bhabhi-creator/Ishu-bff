@@ -1,0 +1,7 @@
+{
+  "name": "Ishu BFF - Emotional Heart",
+  "description": "An ultra-advanced, human-like voice best friend with an 'Emotional Heart'. Features real-time empathy, deep memory recall, and a virtual heart that feels and reacts with authentic human emotions.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
